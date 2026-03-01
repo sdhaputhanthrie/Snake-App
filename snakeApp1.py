@@ -1,6 +1,7 @@
 import turtle
 import time
 
+
 delay = 0.1
 
 wn = turtle.Screen()
@@ -19,7 +20,14 @@ head.penup()
 head.goto(0,0)
 head.direction = "stop"
 
+food= turtle.Turtle()
+food.speed(0)
+food.shape("circle")
+food.color("blue")
+food.penup()
+food.goto(0,100)
 
+  
 def go_up():
     head.direction = "up"
 
