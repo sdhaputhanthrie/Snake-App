@@ -1,5 +1,6 @@
 import turtle
 import time
+import random
 
 
 delay = 0.1
@@ -67,6 +68,12 @@ wn.onkeypress(go_right, "d")
 
 while True:
     wn.update()
+
+    if head.distance(food) < 20:
+        x = random.randint(-290,-290)
+        y = random.randint(-290,-290)
+        food.goto(x,y)
+
     move()
 
     time.sleep(delay)
