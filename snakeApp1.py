@@ -5,13 +5,14 @@ import random
 
 delay = 0.1
 
+score = 0
+high_score = 0
+
 wn = turtle.Screen()
 wn.title("Interactive Snake Game Application")
 wn.bgcolor("skyblue")
 wn.setup(width=600, height=600)
 wn.tracer(0)
-
-
 
 head = turtle.Turtle()
 head.speed(0)
@@ -29,6 +30,15 @@ food.penup()
 food.goto(0,100)
 
 segments = []
+
+pen = turtle.Turtle()
+pen.speed(0)
+pen.shape("square")
+pen.color("white")
+pen.penup()
+pen.hideturtle()
+pen.goto(0,260)
+pen.write("Score: 0 High Score: 0", align="center", font=("Courier", 24, "normal"))
 
   
 def go_up():
@@ -84,6 +94,14 @@ while True:
             segment.hideturtle()
         segments.clear()
 
+        score =  0
+
+        delay = 0.1
+
+        pen.clear()
+        pen.write("Score: {} High Score:{}".format(score, high_score), align="center",  font=("Courier", 24, "normal")),    
+
+
     if head.distance(food) < 20:
         x = random.randint(-290,290)
         y = random.randint(-290,290)
@@ -95,6 +113,15 @@ while True:
         new_segment.color("grey")
         new_segment.penup()
         segments.append(new_segment)
+
+        delay -= 0.001  
+
+        score += 10
+
+        if score > high_score:
+            high_score = score
+        pen.clear()
+        pen.write("Score: {} High Score:{}".format(score, high_score), align="center",  font=("Courier", 24, "normal")),    
 
     for index in range(len(segments)-1, 0, -1): 
         x = segments[index-1].xcor()
@@ -118,6 +145,13 @@ while True:
                 segment.hideturtle()
 
             segments.clear()        
+
+            score =  0
+
+            delay =  0.1 
+
+        pen.clear()
+        pen.write("Score: {} High Score:{}".format(score, high_score), align="center",  font=("Courier", 24, "normal")),    
 
     time.sleep(delay)
 
