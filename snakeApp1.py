@@ -10,7 +10,7 @@ high_score = 0
 
 wn = turtle.Screen()
 wn.title("Interactive Snake Game Application")
-wn.bgcolor("skyblue")
+wn.bgpic("Background.png")
 wn.setup(width=600, height=600)
 wn.tracer(0)
 
